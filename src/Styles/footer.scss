@@ -1,0 +1,19 @@
+.footer {
+  height: 15%;
+  display: flex;
+  background-color: #22222b;
+  border-radius: 0px 0px 30px 30px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  line-height: 0%;
+
+  .footer_text {
+    color: #eeae61;
+    font-size: 12px;
+  }
+  .footer_logo {
+    color: #9da6b9;
+    font-size: 24px;
+  }
+}

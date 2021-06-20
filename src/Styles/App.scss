@@ -1,0 +1,32 @@
+// @import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+@import "./Header.scss";
+@import "./Home.scss";
+@import "./footer.scss";
+
+.App {
+  background-color: #2f2f3a;
+  width: 30%;
+  height: 94vh;
+  margin-left: 35%;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border-radius: 30px;
+  box-shadow: 0px 10px 13px -7px #000000, -1px 32px 24px -10px #000000;
+}
+
+/* for mobile */
+@media screen and (max-width: 600px) {
+  .App {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+/* for tab */
+@media screen and (max-width: 1080px) and (min-width: 600px) {
+  .App {
+    width: 60%;
+    margin-left: 20%;
+  }
+}
