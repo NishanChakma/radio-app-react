@@ -1,9 +1,14 @@
 import React from "react";
 
+import goback from "../../Assests/png/back-arrow.png";
+import switchButton from "../../Assests/png/switch.png";
+
 function Header() {
   return (
     <div className="header">
-      <h5>iiiiiiiiiiii</h5>
+      <img src={goback} alt="Back Button" />
+      <p className="header_text">STATIONS</p>
+      <img src={switchButton} alt="switchButton" />
     </div>
   );
 }
