@@ -3,7 +3,7 @@ import React from "react";
 import goback from "../../Assests/png/back-arrow.png";
 import switchButton from "../../Assests/png/switch.png";
 
-function Header() {
+const Header = () => {
   return (
     <div className="header">
       <img src={goback} alt="Back Button" />
@@ -11,6 +11,6 @@ function Header() {
       <img src={switchButton} alt="switchButton" />
     </div>
   );
-}
+};
 
 export default Header;
