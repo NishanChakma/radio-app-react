@@ -1,51 +1,47 @@
-import React, { useEffect } from "react";
-// import AudioPlayer from "react-h5-audio-player";
+import React, { useEffect, useState } from "react";
+import AudioPlayer from "react-h5-audio-player";
 import { connect } from "react-redux";
 import { getStations } from "../../Action";
-import storeType from "../../Types/StoreType";
+import storeType, { station } from "../../Types/StoreType";
 import AppPropType from "../../App/AppPropType";
 
-// import minusButton from "../../Assests/png/minus.png";
-// import plusButton from "../../Assests/png/plus.png";
-// import defaultImg from "../../Assests/png/default.png";
+import minusButton from "../../Assests/png/minus.png";
+import plusButton from "../../Assests/png/plus.png";
+import defaultImg from "../../Assests/png/default.png";
 
 const Home: React.FC<AppPropType> = ({ station, getStations }) => {
   useEffect(() => {
     getStations();
   }, [getStations]);
-  const data: any = station;
-  console.log("homeeeeeeeeeeeeeeeeee", data.loading, data.stations);
 
-  // console.log("44444444444444", stations);
-  // const [loading, setLoading] = useState(false);
-  // const [toggle, setToggle] = useState(false);
-  // const [station, setStation] = useState([]);
-  // const [stationKey, setStationKey] = useState(null);
+  const [toggle, setToggle] = useState(false);
+  const [stationKey, setStationKey] = useState(0);
 
   //select station and toggle view
-  // const onPressFunc = (key: any) => {
-  //   setStationKey(key);
-  //   stationKey === key ? setToggle(!toggle) : setToggle(true);
-  // };
+  const onPressFunc = (key: number) => {
+    setStationKey(key);
+    stationKey === key ? setToggle(!toggle) : setToggle(true);
+  };
 
   //if no image found in api
-  // const setDefaultSrc = (event: any) => {
-  //   event.target.src = defaultImg;
-  // };
+  const setDefaultSrc = (event: any) => {
+    event.target.src = defaultImg;
+  };
 
-  // while (loading) {
-  //   return (
-  //     <div className="loading">
-  //       <h1>Loading...</h1>
-  //     </div>
-  //   );
-  // }
+  const data: any = station;
+
+  while (data.loading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="home">
-      <h1>jhjjjjj</h1>
-      {/* {station &&
-        station.map((res, key) => {
+      {data.stations &&
+        data.stations.map((res: station, key: number) => {
           return (
             <div key={key}>
               {toggle && stationKey === key && (
@@ -74,7 +70,7 @@ const Home: React.FC<AppPropType> = ({ station, getStations }) => {
                     showJumpControls={false}
                     layout="stacked"
                     customProgressBarSection={[]}
-                    customControlsSection={[""]}
+                    customControlsSection={[]}
                   />
                 </>
               )}
@@ -84,7 +80,7 @@ const Home: React.FC<AppPropType> = ({ station, getStations }) => {
               </div>
             </div>
           );
-        })} */}
+        })}
     </div>
   );
 };
