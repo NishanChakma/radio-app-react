@@ -15,7 +15,7 @@ const Home = () => {
   //select station and toggle view
   const onPressFunc = (key) => {
     setStationKey(key);
-    stationKey === key ? setToggle(false) : setToggle(true);
+    stationKey === key ? setToggle(!toggle) : setToggle(true);
   };
 
   //loading station initially
@@ -98,7 +98,7 @@ const Home = () => {
               )}
               <div className="channel_group" onClick={() => onPressFunc(key)}>
                 <p>{res.name}</p>
-                <p>{res.bitrate}.0</p>
+                <p>{res.bitrate},0</p>
               </div>
             </div>
           );
