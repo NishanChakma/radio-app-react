@@ -1,3 +1,4 @@
+import "./Header.scss";
 import goback from "../../Assests/png/back-arrow.png";
 import switchButton from "../../Assests/png/switch.png";
 

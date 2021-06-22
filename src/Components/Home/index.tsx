@@ -1,3 +1,4 @@
+import "./Home.scss";
 import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { connect } from "react-redux";
