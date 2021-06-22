@@ -1,5 +1,5 @@
 import "./Home.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { connect } from "react-redux";
 import { getStations, currentStation } from "../../Action";
@@ -16,28 +16,35 @@ const Home: React.FC<AppPropType> = ({
   currentStation,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const [onPlay, setOnPlay] = useState(false);
   const [stationKey, setStationKey] = useState(0);
   const [stationName, setStationName] = useState("");
 
+  //get all stations
   useEffect(() => {
     getStations();
   }, [getStations]);
 
+  //set station name for footer
   useEffect(() => {
     toggle ? currentStation(stationName) : currentStation("");
   }, [toggle, stationName, currentStation]);
 
   //select station name and toggle view
-  const onPressFunc = (key: number, name: string) => {
-    setStationKey(key);
-    setStationName(name);
-    stationKey === key ? setToggle(!toggle) : setToggle(true);
-  };
+  const onPressFunc = useCallback(
+    (key: number, name: string) => {
+      setStationKey(key);
+      setStationName(name);
+      setOnPlay(false);
+      stationKey === key ? setToggle(!toggle) : setToggle(true);
+    },
+    [setStationKey, setStationName, setOnPlay, stationKey, toggle, setToggle]
+  );
 
   //if no image found in api
-  const setDefaultSrc = (event: any) => {
+  const setDefaultSrc = useCallback((event: any) => {
     event.target.src = defaultImg;
-  };
+  }, []);
 
   const data: any = station;
 
@@ -63,12 +70,16 @@ const Home: React.FC<AppPropType> = ({
                       alt="minusButton"
                       className="plus_minus"
                     />
-                    <img
-                      src={res.favicon}
-                      alt="plusButton"
-                      className="default_logo"
-                      onError={setDefaultSrc}
-                    />
+                    {onPlay ? (
+                      <img
+                        src={res.favicon}
+                        alt="plusButton"
+                        className="default_logo"
+                        onError={setDefaultSrc}
+                      />
+                    ) : (
+                      <h2>loading...</h2>
+                    )}
                     <img
                       src={plusButton}
                       alt="defaultImg"
@@ -82,6 +93,7 @@ const Home: React.FC<AppPropType> = ({
                     layout="stacked"
                     customProgressBarSection={[]}
                     customControlsSection={[]}
+                    onPlay={(e) => setOnPlay(true)}
                   />
                 </>
               )}
