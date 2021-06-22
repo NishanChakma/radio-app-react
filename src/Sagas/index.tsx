@@ -2,12 +2,17 @@ import { takeEvery, put, call, StrictEffect } from "redux-saga/effects";
 import { actionIds } from "../Types/ActionType";
 import callLocationApi from "../Api";
 import { AxiosResponse } from "axios";
-import { gotStations } from "../Types/ActionType";
+import {
+  gotStations,
+  getCurrentStation,
+  gotCurrentStation,
+} from "../Types/ActionType";
 import { RadioBrowserApi } from "radio-browser-api";
 
 // watchers
 function* SagaActions(): Generator<StrictEffect> {
   yield takeEvery(actionIds.GET_STATIONS, getAllStations);
+  yield takeEvery(actionIds.CURRENT_STATION, setCurrentStation);
 }
 
 // workers
@@ -32,6 +37,18 @@ function* getAllStations() {
           });
     }
     yield put(allStations);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+function* setCurrentStation({ name }: getCurrentStation) {
+  try {
+    const data: gotCurrentStation = {
+      type: "GOT_STATION_NAME",
+      name: name,
+    };
+    yield put(data);
   } catch (err) {
     console.log(err);
   }

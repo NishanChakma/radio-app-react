@@ -1,7 +1,4 @@
-import {
-  getStations,
-  // gotStations,
-} from "./ActionType";
+import { getStations, getCurrentStation } from "./ActionType";
 
 export type getStationsActionCreator = () => getStations;
-// export type gotStationsActionCreator = (station: []) => gotStations;
+export type currentActionCreator = (name: string) => getCurrentStation;

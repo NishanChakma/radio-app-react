@@ -1,8 +1,17 @@
 import { Reducer } from "redux";
 import { station } from "../Types/StoreType";
-import { getStations, gotStations } from "../Types/ActionType";
+import {
+  getStations,
+  gotStations,
+  getCurrentStation,
+  gotCurrentStation,
+} from "../Types/ActionType";
 
-type actions = getStations | gotStations;
+type actions =
+  | getStations
+  | gotStations
+  | gotCurrentStation
+  | getCurrentStation;
 
 const initialState: station[] = [];
 
@@ -16,11 +25,21 @@ const HomeReducer: Reducer<station[], actions> = (
         ...state,
         loading: true,
       };
+    case "CURRENT_STATION":
+      return {
+        ...state,
+        name: action.name,
+      };
     case "GOT_STATIONS":
       return {
         ...state,
         stations: action.stations,
         loading: false,
+      };
+    case "GOT_STATION_NAME":
+      return {
+        ...state,
+        name: action.name,
       };
     default:
       return [...state];

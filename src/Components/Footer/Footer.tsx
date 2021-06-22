@@ -1,12 +1,22 @@
-import React from "react";
+import { connect } from "react-redux";
+import storeType from "../../Types/StoreType";
+import AppPropType from "../../App/AppPropType";
 
-const Footer = () => {
+const Footer: React.FC<AppPropType> = ({ station }: any) => {
   return (
     <div className="footer">
       <p className="footer_text">CURRENTLY PLAYING</p>
-      <p className="footer_logo">Dribbble FM</p>
+      <p className="footer_logo">
+        {station.name ? station.name : "No Radio is Playing!"}
+      </p>
     </div>
   );
 };
 
-export default Footer;
+const mapStateToProps = (state: storeType) => {
+  return {
+    station: state.stations,
+  };
+};
+
+export default connect(mapStateToProps)(Footer);
