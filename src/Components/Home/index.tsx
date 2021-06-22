@@ -14,17 +14,22 @@ const Home: React.FC<AppPropType> = ({
   getStations,
   currentStation,
 }) => {
+  const [toggle, setToggle] = useState(false);
+  const [stationKey, setStationKey] = useState(0);
+  const [stationName, setStationName] = useState("");
+
   useEffect(() => {
     getStations();
   }, [getStations]);
 
-  const [toggle, setToggle] = useState(false);
-  const [stationKey, setStationKey] = useState(0);
+  useEffect(() => {
+    toggle ? currentStation(stationName) : currentStation("");
+  }, [toggle, stationName, currentStation]);
 
   //select station name and toggle view
   const onPressFunc = (key: number, name: string) => {
-    currentStation(name);
     setStationKey(key);
+    setStationName(name);
     stationKey === key ? setToggle(!toggle) : setToggle(true);
   };
 
