@@ -1,7 +1,7 @@
 import "./Footer.scss";
 import { connect } from "react-redux";
 import storeType from "../../Types/StoreType";
-import AppPropType from "../../App/AppPropType";
+import AppPropType from "../../Types/AppPropType";
 
 const Footer: React.FC<AppPropType> = ({ station }: any) => {
   return (

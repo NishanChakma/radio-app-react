@@ -1,8 +1,8 @@
-import { station } from "../Types/StoreType";
+import { station } from "./StoreType";
 import {
   getStationsActionCreator,
   currentActionCreator,
-} from "../Types/ActionCreatorTypes";
+} from "./ActionCreatorTypes";
 
 interface AppPropType {
   station: station[];

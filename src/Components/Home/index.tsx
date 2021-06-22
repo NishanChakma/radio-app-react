@@ -4,7 +4,7 @@ import AudioPlayer from "react-h5-audio-player";
 import { connect } from "react-redux";
 import { getStations, currentStation } from "../../Action";
 import storeType, { station } from "../../Types/StoreType";
-import AppPropType from "../../App/AppPropType";
+import AppPropType from "../../Types/AppPropType";
 
 import minusButton from "../../Assests/png/minus.png";
 import plusButton from "../../Assests/png/plus.png";
