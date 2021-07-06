@@ -1,3 +1,7 @@
+### Project description
+
+This is simple Radio widget. Widget is mostly static -selecting station is the only action available. After selecting station, it should toggle it and display its name at the bottom of the widget. Rest of the buttons should be clickable but it should trigger no action.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
